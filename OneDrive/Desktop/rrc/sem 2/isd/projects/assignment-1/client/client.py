@@ -51,3 +51,56 @@ class Client:
             self.__email_address = valid_email.normalized
         except EmailNotValidError:
             self.__email_address = "email@pixell-river.com"
+
+    @property
+    def client_number(self) -> int:
+        """
+        Getter for the client_number attribute.
+
+        Args:
+            None
+
+        Returns:
+            int: The unique identifier of the client.
+        """
+        return self.__client_number
+
+    @property
+    def first_name(self) -> str:
+        """
+        Getter for the first_name attribute.
+
+        Args:
+            None
+
+        Returns:
+            str: The first name of the client.
+        """
+        return self.__first_name
+
+    @property
+    def last_name(self) -> str:
+        """
+        Getter for the last_name attribute.
+
+        Args:
+            None
+
+        Returns:
+            str: The last name of the client.
+        """
+        return self.__last_name
+
+    @property
+    def email_address(self) -> str:
+        """
+        Getter for the email_address attribute.
+
+        Args:
+            None
+
+        Returns:
+            str: The email address of the client.
+        """
+        return self.__email_address
+
