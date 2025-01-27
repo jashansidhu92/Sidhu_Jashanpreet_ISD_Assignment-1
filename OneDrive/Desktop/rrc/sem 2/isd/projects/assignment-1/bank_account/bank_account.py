@@ -99,3 +99,26 @@ class BankAccount:
             self.__balance += float(amount)
         except ValueError as e:
             print(f"ERROR: {e}")
+
+    def deposit(self, amount: float) -> None:
+        """
+        Deposits a given amount into the account.
+
+        Args:
+            amount (float): The deposit amount.
+
+        Returns:
+            None
+
+        Raises:
+            ValueError: If the amount is not a positive float or is non-numeric.
+        """
+        try:
+            amount = float(amount)
+        except ValueError:
+            raise ValueError(f"Deposit amount must be numeric: {amount}.")
+
+        if amount <= 0:
+            raise ValueError(f"Deposit amount must be positive: ${amount:,.2f}.")
+        
+        self.update_balance(amount)
