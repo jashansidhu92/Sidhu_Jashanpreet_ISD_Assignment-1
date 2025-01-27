@@ -149,3 +149,15 @@ class BankAccount:
             raise ValueError(f"Withdrawal amount exceeds balance: ${amount:,.2f} (balance: ${self.__balance:,.2f}).")
 
         self.update_balance(-amount)
+
+    def __str__(self) -> str:
+        """
+        String representation of the bank account details.
+
+        Args:
+            None
+
+        Returns:
+            str: The formatted string showing account number and balance.
+        """
+        return f"Account Number: {self.__account_number}, Balance: ${self.__balance:,.2f}\n"
