@@ -81,3 +81,21 @@ class BankAccount:
             float: The current account balance.
         """
         return self.__balance
+    
+    def update_balance(self, amount: float) -> None:
+        """
+        Updates the balance with a given amount.
+
+        Args:
+            amount (float): The amount to modify the balance by.
+
+        Returns:
+            None
+
+        Raises:
+            ValueError: If amount cannot be converted to a float.
+        """
+        try:
+            self.__balance += float(amount)
+        except ValueError as e:
+            print(f"ERROR: {e}")
