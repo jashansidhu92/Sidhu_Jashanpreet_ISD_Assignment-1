@@ -9,4 +9,11 @@ Assignment 1: This task will create essential classes that will be part of a lar
 
 
 ## Encapsulation
-[use this section to explain how Encapsulation was achieved in the BankAccount class.]
+Private Attributes: The use of double underscores (__) makes the account_number, client_number, and balance attributes private, preventing direct access from outside the class.
+
+Public Accessors: Getter methods (@property) allow controlled access to these private attributes, enabling read-only access while maintaining encapsulation.
+
+Methods for Modification: Methods like deposit and withdraw ensure that any changes to the balance are validated, preventing invalid operations (e.g., negative amounts or exceeding the balance).
+
+Data Integrity: Encapsulation ensures the internal state of the object remains consistent by restricting direct manipulation and enforcing validation through methods.
+
