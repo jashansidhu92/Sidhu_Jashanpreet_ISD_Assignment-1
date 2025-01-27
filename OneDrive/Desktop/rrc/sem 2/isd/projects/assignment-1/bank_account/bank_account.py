@@ -122,3 +122,30 @@ class BankAccount:
             raise ValueError(f"Deposit amount must be positive: ${amount:,.2f}.")
         
         self.update_balance(amount)
+
+
+    def withdraw(self, amount: float) -> None:
+        """
+        Withdraws a given amount from the account.
+
+        Args:
+            amount (float): The withdrawal amount.
+
+        Returns:
+            None
+
+        Raises:
+            ValueError: If the amount is not numeric, not positive, or exceeds the current balance.
+        """
+        try:
+            amount = float(amount)
+        except ValueError:
+            raise ValueError(f"Withdrawal amount must be numeric: {amount}.")
+
+        if amount <= 0:
+            raise ValueError(f"Withdrawal amount must be positive: ${amount:,.2f}.")
+
+        if amount > self.__balance:
+            raise ValueError(f"Withdrawal amount exceeds balance: ${amount:,.2f} (balance: ${self.__balance:,.2f}).")
+
+        self.update_balance(-amount)
