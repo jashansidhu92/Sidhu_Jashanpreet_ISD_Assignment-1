@@ -26,7 +26,7 @@ class BankAccount:
 
         Raises:
             ValueError: If account_number or client_number are not integers, or if balance is not a valid float.
-            
+
         """
         if isinstance(account_number, int):
             self.__account_number = account_number
@@ -42,3 +42,42 @@ class BankAccount:
             self.__balance = float(balance) if balance is not None else 0.0
         except ValueError:
             self.__balance = 0.0
+
+    @property
+    def account_number(self) -> int:
+        """
+        Getter for the account_number attribute.
+
+        Args:
+            None
+
+        Returns:
+            int: The bank account number.
+        """
+        return self.__account_number
+
+    @property
+    def client_number(self) -> int:
+        """
+        Getter for the client_number attribute.
+
+        Args:
+            None
+
+        Returns:
+            int: The client number associated with the account.
+        """
+        return self.__client_number
+
+    @property
+    def balance(self) -> float:
+        """
+        Getter for the balance attribute.
+
+        Args:
+            None
+
+        Returns:
+            float: The current account balance.
+        """
+        return self.__balance
