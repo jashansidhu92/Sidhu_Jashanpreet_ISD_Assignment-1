@@ -3,16 +3,19 @@ Description: A file that defines the BankAccount class for managing bank account
 """
 
 __author__ = "Jashanpreet Singh Sidhu"
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 
+from abc import ABC, abstractmethod
+from datetime import date
 
-
-class BankAccount:
+class BankAccount(ABC):
     """
     The BankAccount class: Used to manage and store bank account information.
-    """
 
-    def __init__(self, account_number: int, client_number: int, balance: float = None) -> None:
+    """
+    BASE_SERVICE_CHARGE: float = 0.50
+
+    def __init__(self, account_number: int, client_number: int, balance: float, date_created: date) -> None:
         """
         Initializes the class attributes.
 
@@ -20,6 +23,7 @@ class BankAccount:
             account_number (int): The bank account number as an integer.
             client_number (int): The client number associated with the account holder.
             balance (float): The initial balance of the account.
+            date_created(date): The date on which the bank account was created.
 
         Returns:
             None
@@ -42,6 +46,12 @@ class BankAccount:
             self.__balance = float(balance) if balance is not None else 0.0
         except ValueError:
             self.__balance = 0.0
+        
+        if isinstance(date_created, date):
+            self._date_created = date_created
+
+        else:
+            self._date_created = date.today()
 
     @property
     def account_number(self) -> int:
@@ -161,3 +171,17 @@ class BankAccount:
             str: The formatted string showing account number and balance.
         """
         return f"Account Number: {self.__account_number} Balance: ${self.__balance:,.2f}\n"
+    
+    @abstractmethod
+    def get_service_charges(self) -> float:
+        """
+        Calculates the service charges for accounts.
+
+        Args:
+            None
+        
+        Returns:
+            float: The service charge for different accounts.
+
+        """
+        pass
