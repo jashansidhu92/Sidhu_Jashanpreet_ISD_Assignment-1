@@ -7,7 +7,7 @@ managing bank account records for chequing accounts.
 __author__ = "Jashanpreet Singh Sidhu"
 __version__ = "1.0.0"
 
-from abc import ABC, abstractmethod
+
 from datetime import date
 from bank_account.bank_account import BankAccount
 
