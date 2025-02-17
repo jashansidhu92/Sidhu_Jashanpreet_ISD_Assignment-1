@@ -56,16 +56,17 @@ class InvestmentAccount(BankAccount):
             str: String representation of investment account details.
         
         """
-        if self._date_created < InvestmentAccount.TEN_YEARS_AGO
+        if self._date_created >= InvestmentAccount.TEN_YEARS_AGO:
             return (super().__str__()
                     + f'Date Created: {self._date_created} '
-                    + f'Management Fee: Waived '
+                    + f'Management Fee: ${self._InvestmentAccount__management_fee:,.2f} '
                     + f'Account Type: Investment')
+            
     
         else:
             return (super().__str__()
                     + f'Date Created: {self._date_created} '
-                    + f'Management Fee: ${self.__management_fee:,.2f} '
+                    + f'Management Fee: Waived '
                     + f'Account Type: Investment')
         
     def get_service_charges(self) -> float:
@@ -83,7 +84,7 @@ class InvestmentAccount(BankAccount):
         if self._date_created < InvestmentAccount.TEN_YEARS_AGO:  
             service_charge = BankAccount.BASE_SERVICE_CHARGE
         else:
-            service_charge = BankAccount.BASE_SERVICE_CHARGE + self.__management_fee
+            service_charge = BankAccount.BASE_SERVICE_CHARGE + self._InvestmentAccount__management_fee
 
         return service_charge
         
