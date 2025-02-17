@@ -19,3 +19,6 @@ Methods for Modification: Methods like deposit and withdraw ensure that any chan
 
 Data Integrity: Encapsulation ensures the internal state of the object remains consistent by restricting direct manipulation and enforcing validation through methods.
 
+## Polymorphism
+Polymorphism in the BankAccount subclasses is achieved through method overriding. The BankAccount class defines an abstract method get_service_charges(), which is implemented differently in each subclass (e.g., ChequingAccount, SavingsAccount, InvestmentAccount). Each subclass provides its own logic for calculating service charges, but the method signature remains the same.
+
