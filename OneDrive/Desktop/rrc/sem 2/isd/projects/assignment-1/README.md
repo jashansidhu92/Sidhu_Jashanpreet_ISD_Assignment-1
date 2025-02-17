@@ -7,6 +7,8 @@ Jashanpreet Singh Sidhu
 ## Assignment
 Assignment 1: This task will create essential classes that will be part of a larger system. These classes will implement the concepts covered in Module 01, particularly encapsulation, by using private attributes along with public accessors and mutators. The classes will also undergo extensive unit testing, including the planning of those tests. Remember, the classes developed in this assignment will be used in future tasks, so selecting meaningful identifiers and providing thorough documentation will be crucial as the project evolves throughout the semester.
 
+Assignment 2: This assignment will extend the BankAccount class created in your previous assignment. The BankAccount class will be used as a superclass from which more specific subclasses will be derived. Each subclass will inherit attributes and methods from the superclass, and will incorporate functionality specific to the subclass. Polymorphism will be realized by having each subclass provide their own unique implementation to a superclass method. Unit testing in this assignment will be limited to verifying the expected polymorphic behaviour.
+
 
 ## Encapsulation
 Private Attributes: The use of double underscores (__) makes the account_number, client_number, and balance attributes private, preventing direct access from outside the class.
