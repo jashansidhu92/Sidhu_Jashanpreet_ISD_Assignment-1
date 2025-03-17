@@ -32,4 +32,4 @@ The Observer Pattern in this application is used to notify a Client whenever the
 
 Subject (BankAccount): The BankAccount class (or its subclasses like ChequingAccount and SavingsAccount) is the subject that maintains a list of observers (clients) and notifies them when changes occur. It uses attach() to add observers and notify() to alert them of any updates.
 
-Observer (Client): The Client class acts as the observer. When attached to a bank account, it is notified of changes through the update() method, allowing the client to react to those changes (e.g., by updating their account display).
+Observer (Client): The Client class acts as the observer. When attached to a bank account, it is notified of changes through the update() method, allowing the client to react to those changes.
