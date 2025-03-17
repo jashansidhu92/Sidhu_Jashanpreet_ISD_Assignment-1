@@ -5,14 +5,18 @@ Description: A file that defines the BankAccount class for managing bank account
 __author__ = "Jashanpreet Singh Sidhu"
 __version__ = "2.1.0"
 
-from abc import ABC, abstractmethod
 from datetime import date
+from abc import ABC, abstractmethod
+from patterns.observer.observer import Observer
+from patterns.observer.subject import Subject
 
-class BankAccount(ABC):
+class BankAccount(Subject, ABC):
     """
     The BankAccount class: Used to manage and store bank account information.
 
     """
+    LARGE_TRANSACTION_THRESHOLD = 9999.99
+    LOW_BALANCE_LEVEL = 50.00
 
     def __init__(self, account_number: int, client_number: int, balance: float, date_created: date) -> None:
         """
@@ -31,6 +35,7 @@ class BankAccount(ABC):
             ValueError: If account_number or client_number are not integers, or if balance is not a valid float.
 
         """
+        super().__init__()
         if isinstance(account_number, int):
             self.__account_number = account_number
         else:
@@ -184,3 +189,33 @@ class BankAccount(ABC):
 
         """
         pass
+
+    def attach(self, observer: Observer) -> None:
+        """
+        Attaches an observer to the account to receive notifications.
+
+        Args:
+            observer (Observer): The observer to be attached.
+        """
+        if observer not in self._observers:
+            self._observers.append(observer)
+
+    def detach(self, observer: Observer) -> None:
+        """
+        Detaches an observer from the account.
+
+        Args:
+            observer (Observer): The observer to be detached.
+        """
+        if observer in self._observers:
+            self._observers.remove(observer)
+
+    def notify(self, message: str) -> None:
+        """
+        Notifies all observers of an update message.
+
+        Args:
+            message (str): The message to be sent to all observers.
+        """
+        for observer in self._observers:
+            observer.update(message)

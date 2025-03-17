@@ -12,7 +12,7 @@ from utility.file_utils import simulate_send_email
 from datetime import datetime, timedelta
 from email_validator import validate_email, EmailNotValidError
 
-class Client:
+class Client(Observer):
     """
     Client class: Handles the management of client information.
     """
@@ -34,6 +34,7 @@ class Client:
             ValueError: If client_number is not an integer, or if first_name or last_name are empty.
             EmailNotValidError: If email_address is not formatted correctly.
         """
+        super().__init__()
         if isinstance(client_number, int):
             self.__client_number = client_number
         else:
