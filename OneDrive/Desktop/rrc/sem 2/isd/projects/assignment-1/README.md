@@ -9,6 +9,7 @@ Assignment 1: This task will create essential classes that will be part of a lar
 
 Assignment 2: This assignment will extend the BankAccount class created in your previous assignment. The BankAccount class will be used as a superclass from which more specific subclasses will be derived. Each subclass will inherit attributes and methods from the superclass, and will incorporate functionality specific to the subclass. Polymorphism will be realized by having each subclass provide their own unique implementation to a superclass method. Unit testing in this assignment will be limited to verifying the expected polymorphic behaviour.
 
+Assignment 3: This assignment will tackle scalability and maintainability issues in the current service charge calculation system. If PiXELL River Financial adds new account types with different charge formulas, problems like bloated subclasses and repeated code could arise. To improve this, the Strategy Pattern will be used to simplify and scale the service charge functionality. Additionally, the Observer Pattern will notify clients of large transactions or when their account balance falls below a minimum threshold.
 
 ## Encapsulation
 Private Attributes: The use of double underscores (__) makes the account_number, client_number, and balance attributes private, preventing direct access from outside the class.
