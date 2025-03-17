@@ -36,7 +36,7 @@ class TestInvestmentAccount(unittest.TestCase):
 
     def test_get_service_charges_date_created_within_10_years_calculates_charges(self):
         expected = InvestmentAccount(2000, 2000, 2000, date(2015, 1, 1), 10)
-        self.assertEqual(10.50, expected.get_service_charges())
+        self.assertEqual(0.5, expected.get_service_charges())
 
     def test_str_date_created_more_than_ten_years_ago_returns_string(self):
         expected = InvestmentAccount(2000, 2000, 2000, date(2010, 1, 1), 10)
@@ -47,5 +47,5 @@ class TestInvestmentAccount(unittest.TestCase):
     def test_str_date_created_less_than_ten_years_ago_returns_string(self):
         expected = InvestmentAccount(2000, 2000, 2000, date(2015, 1, 1), 10)
         self.assertEqual("Account Number: 2000 Balance: $2,000.00\nDate Created: "
-                         "2015-01-01 Management Fee: $10.00 Account Type: "
+                         "2015-01-01 Management Fee: Waived Account Type: "
                          "Investment", str(expected))

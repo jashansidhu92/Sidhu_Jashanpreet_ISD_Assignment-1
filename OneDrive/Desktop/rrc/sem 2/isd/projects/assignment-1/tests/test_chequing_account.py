@@ -33,7 +33,7 @@ class TestChequingAccount(unittest.TestCase):
 
     def test_invalid_date_created_sets_to_today(self):
         expected = ChequingAccount(100, 100, 100, "(1/1/15)", -10, 0.08)
-        self.assertEqual(date(2025, 2, 16), expected._date_created)
+        self.assertEqual(date(2025, 3, 16), expected._date_created)
 
     def test_get_service_charges_balance_greater_than_limit_sets_charges_to_default(self):
         expected = ChequingAccount(2000, 2000, 2000, date(2015, 1, 1), -20, 0.06)

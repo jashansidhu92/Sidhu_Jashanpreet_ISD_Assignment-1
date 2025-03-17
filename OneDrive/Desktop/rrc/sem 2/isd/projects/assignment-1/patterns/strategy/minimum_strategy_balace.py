@@ -51,7 +51,7 @@ class MinimumBalanceStrategy(ServiceChargeStrategy):
             service_charge = ServiceChargeStrategy.BASE_SERVICE_CHARGE
         
         else:
-            
-            service_charge = (BankAccount.BASE_SERVICE_CHARGE * MinimumBalanceStrategy.SERVICE_CHARGE_PREMIUM)
+
+            service_charge = (ServiceChargeStrategy.BASE_SERVICE_CHARGE * MinimumBalanceStrategy.SERVICE_CHARGE_PREMIUM)
 
         return service_charge

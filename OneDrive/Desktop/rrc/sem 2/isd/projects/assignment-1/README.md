@@ -23,3 +23,6 @@ Data Integrity: Encapsulation ensures the internal state of the object remains c
 ## Polymorphism
 Polymorphism in the BankAccount subclasses is achieved through method overriding. The BankAccount class defines an abstract method get_service_charges(), which is implemented differently in each subclass (e.g., ChequingAccount, SavingsAccount, InvestmentAccount). Each subclass provides its own logic for calculating service charges, but the method signature remains the same.
 
+
+## Strategy Pattern
+In this application, the Strategy Pattern is used to encapsulate the different algorithms for calculating service charges based on varying account conditions. The Strategy Pattern allows the service charge calculation logic to be separated from the main account logic, making it more flexible and maintainable.
