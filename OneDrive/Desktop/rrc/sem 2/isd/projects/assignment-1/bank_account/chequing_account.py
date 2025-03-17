@@ -5,11 +5,12 @@ managing bank account records for chequing accounts.
 """
 
 __author__ = "Jashanpreet Singh Sidhu"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 
 from datetime import date
 from bank_account.bank_account import BankAccount
+from patterns.strategy.overdraft_strategy import OverdraftStrategy
 
 class ChequingAccount(BankAccount):
     """
@@ -50,6 +51,9 @@ class ChequingAccount(BankAccount):
             self.__overdraft_rate = overdraft_rate
         except:
             self.__overdraft_rate = 0.05
+        
+        
+        self.__overdraft_strategy = OverdraftStrategy(self.__overdraft_limit, self.__overdraft_rate)
 
     def __str__(self) -> str:
         """
@@ -78,12 +82,5 @@ class ChequingAccount(BankAccount):
             service_charge(float): The service charge for a chequing account.
         
         """
-        if self._BankAccount__balance >= self.__overdraft_limit:
-            service_charge = BankAccount.BASE_SERVICE_CHARGE
-
-        else:
-            service_charge = (BankAccount.BASE_SERVICE_CHARGE + 
-                            (self.__overdraft_limit - self._BankAccount__balance) *
-                            self.__overdraft_rate)
-            
+        service_charge = self.__overdraft_strategy.calculate_service_charges(self)
         return service_charge

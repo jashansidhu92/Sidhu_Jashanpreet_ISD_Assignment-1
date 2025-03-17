@@ -5,11 +5,12 @@ managing bank account records for investment accounts.
 """
 
 __author__ = "Jashanpreet Singh Sidhu"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 
 from datetime import date, timedelta
 from bank_account.bank_account import BankAccount
+from patterns.strategy.management_fee_strategy import ManagementFeeStrategy
 
 class InvestmentAccount(BankAccount):
     """
@@ -44,6 +45,8 @@ class InvestmentAccount(BankAccount):
             self.__management_fee = management_fee
         except:
             self.__management_fee = 2.55
+
+        self.__management_fee_strategy = ManagementFeeStrategy(self._date_created, self.__management_fee)
 
     def __str__(self) -> str:
         """
@@ -81,11 +84,7 @@ class InvestmentAccount(BankAccount):
         
         """
 
-        if self._date_created < InvestmentAccount.TEN_YEARS_AGO:  
-            service_charge = BankAccount.BASE_SERVICE_CHARGE
-        else:
-            service_charge = BankAccount.BASE_SERVICE_CHARGE + self._InvestmentAccount__management_fee
-
+        service_charge = self.__management_fee_strategy.calculate_service_charges(self)
         return service_charge
         
 

@@ -6,18 +6,18 @@ account records for saving accounts.
 """
 
 __author__ = "Jashanpreet Singh Sidhu"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __credits__ = "Jashanpreet Singh Sidhu"
 
 from bank_account.bank_account import BankAccount
 from datetime import date
+from patterns.strategy.minimum_strategy_balace import MinimumBalanceStrategy
 
 class SavingsAccount(BankAccount):
     """
     SavingsAccount class: Used to manage savings accounts for clients.
 
     """
-    SERVICE_CHARGE_PREMIUM: float = 2.0
 
     def __init__(self, account_number: int, client_number: int, balance: float,
                 date_created: date, minimum_balance: float) -> None:
@@ -48,6 +48,8 @@ class SavingsAccount(BankAccount):
         except:
             self.__minimum_balance = 50
 
+        self.__minimum_balance_strategy = MinimumBalanceStrategy(self.__minimum_balance)
+
     def __str__(self) -> str:
         """
         Returns a string representation of the details of a savings account.
@@ -75,11 +77,7 @@ class SavingsAccount(BankAccount):
             service_charge(float): The service charge for a savings account.
         
         """
-        if self._BankAccount__balance >= self.__minimum_balance:
-            service_charge = BankAccount.BASE_SERVICE_CHARGE
-        else:
-            service_charge = BankAccount.BASE_SERVICE_CHARGE * SavingsAccount.SERVICE_CHARGE_PREMIUM
-
+        service_charge = self.__minimum_balance_strategy.calculate_service_charges(self)
         return service_charge
 
 

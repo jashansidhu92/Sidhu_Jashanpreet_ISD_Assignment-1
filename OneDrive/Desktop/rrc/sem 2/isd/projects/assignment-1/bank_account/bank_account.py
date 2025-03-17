@@ -3,7 +3,7 @@ Description: A file that defines the BankAccount class for managing bank account
 """
 
 __author__ = "Jashanpreet Singh Sidhu"
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 from abc import ABC, abstractmethod
 from datetime import date
@@ -13,7 +13,6 @@ class BankAccount(ABC):
     The BankAccount class: Used to manage and store bank account information.
 
     """
-    BASE_SERVICE_CHARGE: float = 0.50
 
     def __init__(self, account_number: int, client_number: int, balance: float, date_created: date) -> None:
         """
