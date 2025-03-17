@@ -7,6 +7,9 @@ Client class responsible for managing client data.
 __author__ = "Jashanpreet Singh Sidhu"
 __version__ = "1.0.0"
 
+from patterns.observer.observer import Observer
+from utility.file_utils import simulate_send_email
+from datetime import datetime, timedelta
 from email_validator import validate_email, EmailNotValidError
 
 class Client:
@@ -116,5 +119,16 @@ class Client:
         """
         return (f"{self.__last_name}, {self.__first_name} "
                 f"[{self.__client_number}] - {self.__email_address}\n")
+    
+    def update(self, message: str):
+        """
+        Trigerred when the Observer is notified. Sends a simulated email notification.
+        
+        """
+        current_time = datetime.now()
+        subject = f"ALERT: Unusual Activity: {current_time}"
+        email_message = f"Notification for {self.client_number}: {self.first_name} {self.last_name}: {message}"
+        
+        simulate_send_email(self.email_address, subject, email_message)
 
 
