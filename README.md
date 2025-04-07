@@ -11,6 +11,8 @@ Assignment 2: This assignment will extend the BankAccount class created in your 
 
 Assignment 3: This assignment will tackle scalability and maintainability issues in the current service charge calculation system. If PiXELL River Financial adds new account types with different charge formulas, problems like bloated subclasses and repeated code could arise. To improve this, the Strategy Pattern will be used to simplify and scale the service charge functionality. Additionally, the Observer Pattern will notify clients of large transactions or when their account balance falls below a minimum threshold.
 
+Assignment 4: In this assignment, we will develop a responsive Windows application using PySide6, focusing on event handling to enable dynamic interaction with user actions. We will use functional programming principles to extend the provided base classes with predefined window designs, demonstrating the flexibility and power of functional programming. Additionally, the application will manage data by reading from files and organizing it into dictionaries, which will serve as the foundation for processing and manipulating data within the app. This task will enhance your understanding of event-driven programming while improving your skills in data management, offering a comprehensive approach to building modern applications with PySide6.
+
 ## Encapsulation
 Private Attributes: The use of double underscores (__) makes the account_number, client_number, and balance attributes private, preventing direct access from outside the class.
 
@@ -33,3 +35,10 @@ The Observer Pattern in this application is used to notify a Client whenever the
 Subject (BankAccount): The BankAccount class (or its subclasses like ChequingAccount and SavingsAccount) is the subject that maintains a list of observers (clients) and notifies them when changes occur. It uses attach() to add observers and notify() to alert them of any updates.
 
 Observer (Client): The Client class acts as the observer. When attached to a bank account, it is notified of changes through the update() method, allowing the client to react to those changes.
+
+## Programming Paradigm
+This application implements the event-driven programming paradigm through:
+- Signal/slot connections between UI elements and handler methods
+- Custom signals for communication between windows
+- Event handlers for user interactions (button clicks, table selections)
+- Asynchronous processing of user-initiated events

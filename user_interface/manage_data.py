@@ -1,6 +1,6 @@
 __author__ = "ACE Faculty"
-__version__ = "1.0.0"
-__credits__ = ""
+__version__ = "1.1.0"
+__credits__ = "Jashan Sidhu"
 
 import os
 import sys

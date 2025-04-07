@@ -1,5 +1,5 @@
 __author__ = "ACE Faculty"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __credits__ = "Jashan Sidhu"
 
 from PySide6.QtWidgets import QTableWidgetItem, QMessageBox
