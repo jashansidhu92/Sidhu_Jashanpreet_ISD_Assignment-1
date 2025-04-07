@@ -10,9 +10,30 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import csv
 from datetime import datetime
 import logging
+from pathlib import Path
+from copy import deepcopy
+from bank_account.chequing_account import ChequingAccount
+from bank_account.investment_account import InvestmentAccount
+from bank_account.savings_account import SavingsAccount
+from client.client import Client
+from bank_account import *
 
 # *******************************************************************************
 # GIVEN LOGGING AND FILE ACCESS CODE
+logs_dir = Path(__file__).parent.parent / "logs"
+logs_dir.mkdir(exist_ok=True)
+
+# Configure logging
+logging.basicConfig(
+    filename=logs_dir / "manage_data.log",
+    level=logging.ERROR,
+    format="%(name)s - %(levelname)s - %(message)s"
+)
+
+# File paths
+data_dir = Path(__file__).parent.parent / "data"
+clients_file = data_dir / "clients.csv"
+accounts_file = data_dir / "accounts.csv"
  
 # Absolute path to root of directory
 root_dir = os.path.dirname(os.path.dirname(__file__))
