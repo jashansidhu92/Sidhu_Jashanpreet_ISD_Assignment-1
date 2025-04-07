@@ -71,8 +71,8 @@ class ClientLookupWindow(LookupWindow):
                 balance_item = QTableWidgetItem(f"${account.balance:,.2f}")
                 balance_item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                 
-                # Date Created
-                date_item = QTableWidgetItem(account.date_created)
+                # Date Created - CORRECTED LINE
+                date_item = QTableWidgetItem(account._date_created)
                 date_item.setTextAlignment(Qt.AlignCenter)
                 
                 # Account Type
