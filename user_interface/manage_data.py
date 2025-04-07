@@ -70,25 +70,83 @@ accounts_csv_path = os.path.join(data_dir, 'accounts.csv')
 
 
 def load_data()->tuple[dict,dict]:
-    """
-    Populates a client dictionary and an account dictionary with 
-    corresponding data from files within the data directory.
-    Returns:
-        tuple containing client dictionary and account dictionary.
-    """
+    """Load client and account data from CSV files"""
     client_listing = {}
     accounts = {}
-
-    # READ CLIENT DATA 
-    with open(clients_csv_path, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        
-
+    
+    # READ CLIENT DATA
+    try:
+        with open(clients_file, 'r', newline='') as file:
+            reader = csv.DictReader(file)
+            for record in reader:
+                try:
+                    client = Client(
+                        client_number=int(record['client_number']),
+                        first_name=record['first_name'],
+                        last_name=record['last_name'],
+                        email_address=record['email_address']
+                    )
+                    client_listing[client.client_number] = client
+                except Exception as e:
+                    logging.error(f"Unable to create client: {str(e)}")
+    except FileNotFoundError:
+        logging.error("Clients file not found")
+    
     # READ ACCOUNT DATA
-    with open(accounts_csv_path, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)  
-
+    try:
+        with open(accounts_file, 'r', newline='') as file:
+            reader = csv.DictReader(file)
+            for record in reader:
+                try:
+                    # Convert data types
+                    account_number = int(record['account_number'])
+                    client_number = int(record['client_number'])
+                    balance = float(record['balance'])
+                    
+                    # Check if client exists
+                    if client_number not in client_listing:
+                        logging.error(f"Bank Account: {account_number} contains invalid Client Number: {client_number}")
+                        continue
+                    
+                    # Create appropriate account type
+                    account_type = record['account_type']
+                    if account_type == "ChequingAccount":
+                        account = ChequingAccount(
+                            account_number=account_number,
+                            client_number=client_number,
+                            balance=balance,
+                            date_created=record['date_created'],
+                            overdraft_limit=float(record['overdraft_limit']),
+                            overdraft_rate=float(record['overdraft_rate'])
+                        )
+                    elif account_type == "SavingsAccount":
+                        account = SavingsAccount(
+                            account_number=account_number,
+                            client_number=client_number,
+                            balance=balance,
+                            date_created=record['date_created'],
+                            minimum_balance=float(record['minimum_balance'])
+                        )
+                    elif account_type == "InvestmentAccount":
+                        account = InvestmentAccount(
+                            account_number=account_number,
+                            client_number=client_number,
+                            balance=balance,
+                            date_created=record['date_created'],
+                            management_fee=float(record['management_fee'])
+                        )
+                    else:
+                        raise ValueError("Not a valid account type.")
+                    
+                    accounts[account_number] = account
+                    
+                except Exception as e:
+                    logging.error(f"Unable to create bank account: {str(e)}")
+    except FileNotFoundError:
+        logging.error("Accounts file not found")
+    
     # RETURN STATEMENT
+    return (client_listing, accounts)
     
 
 
