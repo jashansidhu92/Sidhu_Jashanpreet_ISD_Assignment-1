@@ -22,6 +22,7 @@ class ClientLookupWindow(LookupWindow):
         self.lookup_button.clicked.connect(self.on_lookup_client)
         self.client_number_edit.textChanged.connect(self.on_text_changed)
         self.account_table.cellClicked.connect(self.on_select_account)
+        self.filter_button.clicked.connect(self.on_filter_clicked)
     
     def on_lookup_client(self):
         """Handle lookup button click event"""
@@ -88,6 +89,9 @@ class ClientLookupWindow(LookupWindow):
                 row += 1
         
         self.account_table.resizeColumnsToContents()
+
+        if client:
+            self.toggle_filter(False)
     
     @Slot()
     def on_text_changed(self):
@@ -143,6 +147,41 @@ class ClientLookupWindow(LookupWindow):
         
         # Update CSV file
         update_data(account)
+
+    def on_filter_clicked(self):
+        if self.filter_button.text() == "Apply Filter":
+            column = self.filter_combo_box.currentIndex()
+            filter_text = self.filter_edit.text().lower()
+            
+            for row in range(self.account_table.rowCount()):
+                item = self.account_table.item(row, column)
+                match = filter_text in item.text().lower()
+                self.account_table.setRowHidden(row, not match)
+            
+            self.toggle_filter(True)
+        else:
+            self.toggle_filter(False)
+
+    def toggle_filter(self, filter_on):
+        self.filter_button.setEnabled(True)
+        
+        if filter_on:
+            self.filter_button.setText("Reset")
+            self.filter_combo_box.setEnabled(False)
+            self.filter_edit.setEnabled(False)
+            self.filter_label.setText("Data is Currently Filtered")
+        else:
+            self.filter_button.setText("Apply Filter")
+            self.filter_combo_box.setEnabled(True)
+            self.filter_edit.setEnabled(True)
+            self.filter_edit.setText("")
+            self.filter_combo_box.setCurrentIndex(0)
+            
+            for row in range(self.account_table.rowCount()):
+                self.account_table.setRowHidden(row, False)
+                
+            self.filter_label.setText("Data is Not Currently Filtered")
+
 
     
         
