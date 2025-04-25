@@ -46,3 +46,9 @@ This application implements the event-driven programming paradigm through:
 - Custom signals for communication between windows
 - Event handlers for user interactions (button clicks, table selections)
 - Asynchronous processing of user-initiated events
+
+## Filtering
+The application now includes filtering functionality that allows users to:
+- Filter account listings by any column
+- Enter partial text matches
+- Toggle between filtered and full views
