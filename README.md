@@ -13,6 +13,10 @@ Assignment 3: This assignment will tackle scalability and maintainability issues
 
 Assignment 4: In this assignment, we will develop a responsive Windows application using PySide6, focusing on event handling to enable dynamic interaction with user actions. We will use functional programming principles to extend the provided base classes with predefined window designs, demonstrating the flexibility and power of functional programming. Additionally, the application will manage data by reading from files and organizing it into dictionaries, which will serve as the foundation for processing and manipulating data within the app. This task will enhance your understanding of event-driven programming while improving your skills in data management, offering a comprehensive approach to building modern applications with PySide6.
 
+Assignment 5: Algorithms, Help Files and Distribution
+
+In this assignment we will incorporate a filtering algorithm into the GUI application such that the user may filter the bank account listing based on user-defined criteria. Additionally, the project will be wrapped up by generating html help files for each of the classes based on the docstrings coded throughout the semester. As well, the project will be packaged up into a user-friendly installer such that it may be distributed to users.
+
 ## Encapsulation
 Private Attributes: The use of double underscores (__) makes the account_number, client_number, and balance attributes private, preventing direct access from outside the class.
 
