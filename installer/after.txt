@@ -1,0 +1,19 @@
+PiXELL-River Account Manager - Installation Complete
+
+Congratulations! You have successfully installed PiXELL-River Account Manager.
+
+GETTING STARTED:
+1. Launch the application from your Desktop shortcut or Start Menu
+2. Application will automatically create required data files in:
+   - Documents/PiXELL-River/Data/
+
+SUPPORT:
+- For technical support, contact: support@rrc.ca
+- User documentation is available in the Help menu
+
+IMPORTANT NOTES:
+- First launch may take longer as it initializes the database
+- We recommend restarting your computer after installation
+
+Thank you for choosing PiXELL-River Account Manager!
+

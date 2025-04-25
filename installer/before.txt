@@ -1,0 +1,24 @@
+PiXELL-River Account Manager - Installation Preparation
+
+Thank you for choosing PiXELL-River Account Manager!
+
+Before proceeding with installation, please ensure:
+
+1. SYSTEM REQUIREMENTS:
+   - Operating System: Windows 10 or newer (64-bit)
+   - RAM: Minimum 4GB recommended
+   - Disk Space: 50MB available space
+   - Screen Resolution: 1024x768 minimum
+
+2. PREREQUISITES:
+   - Close all other applications before installation
+   - Ensure you have administrator privileges
+   - Disable any antivirus temporarily if installation is blocked
+
+3. INSTALLATION NOTES:
+   - This will install the software to your Program Files folder
+   - A desktop shortcut will be created
+   - Estimated installation time: 1-2 minutes
+
+Click Next to continue with the installation process.
+
